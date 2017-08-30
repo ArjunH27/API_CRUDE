@@ -21,7 +21,6 @@ namespace API_CRUD.Controllers
             obj.address = paddress;
             api.API_profile.Add(obj);
             api.SaveChanges();
-
             return ("Success");
         }
 
@@ -71,7 +70,7 @@ namespace API_CRUD.Controllers
         [Route("delete")]
         public string delete(int did)
         {
-           Application1Entities api = new Application1Entities();
+            Application1Entities api = new Application1Entities();
             API_profile obj = api.API_profile.Single(x => x.id == did);
             api.API_profile.Remove(obj);
             api.SaveChanges();
