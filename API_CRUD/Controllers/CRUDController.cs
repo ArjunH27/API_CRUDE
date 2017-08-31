@@ -11,14 +11,28 @@ namespace API_CRUD.Controllers
     public class CRUDController : ApiController
     {
         //insert
-        [HttpPost][Route("add")]
-        public string add(int pid,string pname,string paddress)
+        //[HttpPost][Route("add")]
+        //public string add(int pid,string pname,string paddress)
+        //{
+        //    Application1Entities api = new Application1Entities();
+        //    API_profile obj = new API_profile();
+        //    obj.id = pid;
+        //    obj.name = pname;
+        //    obj.address = paddress;
+        //    api.API_profile.Add(obj);
+        //    api.SaveChanges();
+        //    return ("Success");
+        //}
+        //insert
+        [HttpPost]
+        [Route("add")]
+        public string add(API_profile pro)
         {
             Application1Entities api = new Application1Entities();
             API_profile obj = new API_profile();
-            obj.id = pid;
-            obj.name = pname;
-            obj.address = paddress;
+            obj.id = pro.id;
+            obj.name = pro.name;
+            obj.address =pro.address;
             api.API_profile.Add(obj);
             api.SaveChanges();
             return ("Success");
@@ -55,12 +69,12 @@ namespace API_CRUD.Controllers
         //update
         [HttpPost]
         [Route("update")]
-        public string update(int uid,string uname,string uaddress)
+        public string update(API_profile pro)
         {
             Application1Entities api = new Application1Entities();
-            API_profile obj = api.API_profile.Single(x => x.id == uid);
-            obj.name = uname;
-            obj.address = uaddress;
+            API_profile obj = api.API_profile.Single(x => x.id == pro.id);
+            obj.name = pro.name;
+            obj.address = pro.address;
             api.SaveChanges();
             return ("Success");
         }
