@@ -69,7 +69,7 @@ namespace API_CRUD.Controllers
             {
                 client.BaseAddress = new Uri("http://localhost:57591/");
                 //HTTP GET
-                var responseTask = client.GetAsync("update?id=" + id.ToString());
+                var responseTask = client.GetAsync("search?sid=" + id.ToString());
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -93,7 +93,7 @@ namespace API_CRUD.Controllers
                 client.BaseAddress = new Uri("http://localhost:57591/");
 
                 //HTTP POST
-                var putTask = client.PutAsJsonAsync("update", pro);
+                var putTask = client.PostAsJsonAsync("update", pro);
                 putTask.Wait();
 
 

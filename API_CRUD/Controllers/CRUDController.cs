@@ -57,11 +57,12 @@ namespace API_CRUD.Controllers
         [Route("search")]
         public IHttpActionResult search(int sid)
         {
-            List<API_profile> api_search;
+            API_profile api_search;
             using (var context = new Application1Entities())
             {
-                api_search = context.API_profile.Where(x =>x.id==sid).ToList();
+                api_search = context.API_profile.Where(x =>x.id==sid).FirstOrDefault();
             }
+            
             return Ok(api_search);
           
         }
