@@ -10,20 +10,7 @@ namespace API_CRUD.Controllers
 {
     public class CRUDController : ApiController
     {
-        //insert
-        //[HttpPost][Route("add")]
-        //public string add(int pid,string pname,string paddress)
-        //{
-        //    Application1Entities api = new Application1Entities();
-        //    API_profile obj = new API_profile();
-        //    obj.id = pid;
-        //    obj.name = pname;
-        //    obj.address = paddress;
-        //    api.API_profile.Add(obj);
-        //    api.SaveChanges();
-        //    return ("Success");
-        //}
-        //insert
+       
         [HttpPost]
         [Route("add")]
         public string add(API_profile pro)
@@ -83,10 +70,10 @@ namespace API_CRUD.Controllers
         //Delete
         [HttpPost]
         [Route("delete")]
-        public string delete(int did)
+        public string delete(API_profile pro)
         {
             Application1Entities api = new Application1Entities();
-            API_profile obj = api.API_profile.Single(x => x.id == did);
+            API_profile obj = api.API_profile.Single(x => x.id == pro.id);
             api.API_profile.Remove(obj);
             api.SaveChanges();
             return ("Success");

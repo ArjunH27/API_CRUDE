@@ -106,5 +106,55 @@ namespace API_CRUD.Controllers
             }
             return View(pro);
         }
+
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            API_profile obj = null;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:57591/");
+                //HTTP GET
+                var responseTask = client.GetAsync("search?sid=" + id.ToString());
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<API_profile>();
+                    readTask.Wait();
+
+                    obj = readTask.Result;
+                }
+            }
+
+            return View(obj);
+        }
+
+
+        [HttpPost]
+        public ActionResult Delete(API_profile pro)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:57591/");
+
+                //HTTP DELETE
+                var deleteTask = client.PostAsJsonAsync("delete",pro);
+                deleteTask.Wait();
+
+                var result = deleteTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return RedirectToAction("Index");
+
+        }
     }
 }
