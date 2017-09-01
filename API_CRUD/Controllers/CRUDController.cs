@@ -78,5 +78,20 @@ namespace API_CRUD.Controllers
             api.SaveChanges();
             return ("Success");
         }
+
+        //example of HttpResponseMessage
+        //[HttpGet]
+        //[Route("try")]
+        //public HttpResponseMessage exm(int a)
+        //{
+        //    if(a==1)
+        //    {
+        //        return Request.CreateResponse(HttpStatusCode.OK, a);
+        //    }
+        //    else
+        //    {
+        //        return Request.CreateResponse(HttpStatusCode.NotAcceptable, "only 1");
+        //    }
+        //}
     }
 }
