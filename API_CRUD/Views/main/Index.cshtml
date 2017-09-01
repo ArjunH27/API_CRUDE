@@ -3,13 +3,17 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
+<style>
+    body{
+        background-color:azure;
+    }
+</style>
+<h2>PROFILE</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table" style="background-color:aliceblue;color:black;border:3px solid black">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.name)
